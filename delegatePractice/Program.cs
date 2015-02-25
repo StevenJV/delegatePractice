@@ -21,10 +21,13 @@ namespace delegatePractice
       var rectangle = When<Rectangle>(ShrinkRectangle);
 
 
+
       IShape myThing = box;  // or = circle; we shouldn't care from this point on. 
-      
+
+      Action myAction = myThing.Grow;
+
       //we don't care what the thing is, make it bigger
-      myThing.Grow();
+      PerformTwice(myAction);
 
       // doSomething(  )  
 
@@ -44,6 +47,11 @@ namespace delegatePractice
       return shape;
     }
 
-     
+    private static void PerformTwice(Action shapeAction)
+    {
+      shapeAction();
+      shapeAction();
+    }
+
   }
 }
