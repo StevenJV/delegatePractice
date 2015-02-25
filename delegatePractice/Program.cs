@@ -6,29 +6,44 @@ namespace delegatePractice
   class Program
   {
     static void Main(string[] args) {
-      //Action<int, int> printNumber = methods.PrintNumbersUp;
-      //printNumber(5, 20);
-      //printNumber = methods.PrintNumbersDown;
-      //printNumber(5, 20);
 
       Action<int, int> displaySize = (a, b) => Console.WriteLine(string.Format("object is {0} x {1}", a, b));
 
-      var box = new Rectangle();
-
-      // box.AdjustSize( );  // ?? want to be able to AdjustSize(grow());  or AdjustSize(shrink()); 
-
+      IShape box = new Rectangle();
       displaySize(box.Perimiter(), box.Area());
 
-      DoInorder(methods.PrintNumbersUp, methods.PrintNumbersDown);
+      var circle = When<Circle>(shape =>
+      {
+        shape.Grow();
+        shape.Shrink();
+      });
+
+      var rectangle = When<Rectangle>(ShrinkRectangle);
+
+
+      IShape myThing = box;  // or = circle; we shouldn't care from this point on. 
+      
+      //we don't care what the thing is, make it bigger
+      myThing.Grow();
+
+      // doSomething(  )  
 
       Console.Read();
     }
 
-    private static void DoInorder(Action<int, int> firstAction,
-                                  Action<int, int> secondAction) {
-      firstAction(1, 5);
-      secondAction(6, 10);
+    private static void ShrinkRectangle(Rectangle rectangle)
+    {
+      rectangle.Shrink();
     }
 
+    private static TShape When<TShape>(Action<TShape> shapeInitializer)
+      where TShape : IShape, new()
+    {
+      var shape = new TShape();
+      shapeInitializer(shape);
+      return shape;
+    }
+
+     
   }
 }

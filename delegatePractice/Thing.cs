@@ -3,10 +3,65 @@
 
 namespace delegatePractice
 {
-  internal class Rectangle
+  public interface IShape
+  {
+    int Perimiter();
+    int Area();
+    void Grow();
+    void Shrink();
+    void AdjustSize();
+  }
+
+  internal class Circle : IShape
+  {
+    private int _radius ;
+
+    public Circle()
+    {
+      this._radius = 2;
+    }
+
+    public Circle(int radius)
+    {
+      this._radius = radius;
+    }
+
+    public int Perimiter()
+    {
+      return (int) (_radius*2*Math.PI);
+    }
+
+    public int Area()
+    {
+      return (int) (Math.PI*(_radius ^ 2));
+    }
+
+    public void Grow()
+    {
+      this._radius++;
+    }
+
+    public void Shrink()
+    {
+      if (_radius >= 1) {
+        _radius--;
+      }
+    }
+
+    public void AdjustSize()
+    {
+      throw new NotImplementedException();
+    }
+  }
+
+  internal class Rectangle:IShape
   {
     private int _length;
     private int _width;
+    private int _minLength = 1;
+    private int _minWidth = 1;
+    private int maxLength = 5;
+    private int maxWidth = 5;
 
     public Rectangle()
     {
@@ -36,22 +91,21 @@ namespace delegatePractice
     }
 
     public void Shrink() {
-      if (_length >= 1) {
+      if (_length >= _minLength) {
         _length--;
       }
-      if (_width >= 1) {
+      if (_width >= _minWidth) {
         _width--;
       }
     }
 
-    public void AdjustSize(Action<Rectangle> thingToDo)
+    public void AdjustSize()
     {
-      thingToDo.Invoke(this);
+      throw new NotImplementedException();
     }
-
-
-
-
   }
+
+
+
 }
 
