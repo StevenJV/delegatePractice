@@ -7,8 +7,8 @@
     <ProjectGuid>{84C97632-C5C6-42A1-B13A-25251C990355}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>delegatePractcie</RootNamespace>
-    <AssemblyName>delegatePractcie</AssemblyName>
+    <RootNamespace>delegatePractice</RootNamespace>
+    <AssemblyName>delegatePractice</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

@@ -1,5 +1,6 @@
 ﻿using System;
 
+// ReSharper disable once CheckNamespace
 namespace delegatePractice
 {
   class Program
@@ -13,7 +14,8 @@ namespace delegatePractice
       Action<int, int> displaySize = (a, b) => Console.WriteLine(string.Format("object is {0} x {1}", a, b));
 
       var box = new Rectangle();
-      box.AdjustSize(box.Grow());
+
+      // box.AdjustSize( );  // ?? want to be able to AdjustSize(grow());  or AdjustSize(shrink()); 
 
       displaySize(box.Perimiter(), box.Area());
 
@@ -27,7 +29,6 @@ namespace delegatePractice
       firstAction(1, 5);
       secondAction(6, 10);
     }
-
 
   }
 }

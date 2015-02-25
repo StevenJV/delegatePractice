@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using delegatePractice;
+
 
 namespace delegatePractice
 {
@@ -48,9 +44,12 @@ namespace delegatePractice
       }
     }
 
-    public void AdjustSize(Action<Rectangle> thingToDo) {
+    public void AdjustSize(Action<Rectangle> thingToDo)
+    {
       thingToDo.Invoke(this);
     }
+
+
 
 
   }
