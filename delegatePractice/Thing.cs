@@ -10,12 +10,17 @@ namespace delegatePractice
     void Grow();
     void Shrink();
     void AdjustSize();
+    string Type();
   }
 
   internal class Circle : IShape
   {
     private int _radius ;
 
+    public string Type()
+    {
+      return "Circle";
+    }
     public Circle()
     {
       this._radius = 2;
@@ -63,6 +68,10 @@ namespace delegatePractice
     private int maxLength = 5;
     private int maxWidth = 5;
 
+    public string Type()
+    {
+      return "Rectangle";
+    }
     public Rectangle()
     {
       this._length = 2;
